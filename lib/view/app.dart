@@ -14,6 +14,7 @@ class App extends StatelessWidget {
         brightness: Brightness.dark,
       ),
       // home: InitView(),
+      initialRoute: InitView.name,
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case InitView.name:
