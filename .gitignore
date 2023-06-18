@@ -30,6 +30,9 @@ migrate_working_dir/
 /build/
 pubspec.lock
 
+#Build related
+*.g.dart
+*freezed.dart
 # Symbolication related
 app.*.symbols
 app.*.map.json
