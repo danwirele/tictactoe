@@ -15,16 +15,24 @@ class GameModel {
     const Board.rightBottom(): const Field.none(),
   };
 
+  void resetGame() {
+    card.updateAll((key, value) => value = const Field.none());
+    turnNum = 0;
+    nextField = const Field.tick();
+  }
+
   void putField(Board board) {
-    card[board] = nextField.mapOrNull(
-      tick: (_) => const Field.tick(),
-      toe: (_) => const Field.toe(),
-    )!;
-    nextField = nextField.mapOrNull(
-      tick: (_) => const Field.toe(),
-      toe: (_) => const Field.tick(),
-    )!;
-    turnNum = turnNum + 1;
+    if (card[board] == Field.none()) {
+      card[board] = nextField.mapOrNull(
+        tick: (_) => const Field.tick(),
+        toe: (_) => const Field.toe(),
+      )!;
+      nextField = nextField.mapOrNull(
+        tick: (_) => const Field.toe(),
+        toe: (_) => const Field.tick(),
+      )!;
+      turnNum = turnNum + 1;
+    }
   }
 
   Field? checkWiner() {
@@ -33,7 +41,9 @@ class GameModel {
     // check all rows
     if (card[const Board.leftTop()] == tick &&
         card[const Board.centerTop()] == tick &&
-        card[const Board.rightTop()] == tick) return const Field.tick();
+        card[const Board.rightTop()] == tick) {
+      return const Field.tick();
+    }
     if (card[const Board.leftTop()] == toe &&
         card[const Board.centerTop()] == toe &&
         card[const Board.rightTop()] == toe) return const Field.toe();
@@ -68,20 +78,20 @@ class GameModel {
         card[const Board.centerBottom()] == toe) return const Field.toe();
 
     if (card[const Board.rightTop()] == tick &&
-        card[const Board.rightTop()] == tick &&
+        card[const Board.rightMiddle()] == tick &&
         card[const Board.rightBottom()] == tick) return const Field.tick();
     if (card[const Board.rightTop()] == toe &&
-        card[const Board.rightTop()] == toe &&
+        card[const Board.rightMiddle()] == toe &&
         card[const Board.rightBottom()] == toe) return const Field.toe();
 
     //check all diags
     //check main diag
     if (card[const Board.leftTop()] == tick &&
         card[const Board.centerMiddle()] == tick &&
-        card[const Board.rightTop()] == tick) return const Field.tick();
+        card[const Board.rightBottom()] == tick) return const Field.tick();
     if (card[const Board.leftTop()] == toe &&
         card[const Board.centerMiddle()] == toe &&
-        card[const Board.rightTop()] == toe) return const Field.toe();
+        card[const Board.rightBottom()] == toe) return const Field.toe();
     //check indirect diag
     if (card[const Board.rightTop()] == tick &&
         card[const Board.centerMiddle()] == tick &&
