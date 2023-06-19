@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tictactoe/view/game_view/game_view.dart';
 import 'package:tictactoe/view/init_view/init_view.dart';
+import 'package:tictactoe/view/start_game_view/start_gane_view.dart';
 import 'package:tictactoe/view/undefined_view/undefined_view.dart';
 
 class App extends StatelessWidget {
@@ -14,7 +15,7 @@ class App extends StatelessWidget {
         brightness: Brightness.dark,
       ),
       // home: InitView(),
-      initialRoute: InitView.name,
+      initialRoute: GameView.name,
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case InitView.name:
@@ -24,6 +25,10 @@ class App extends StatelessWidget {
           case GameView.name:
             return MaterialPageRoute(
               builder: (context) => GameView(),
+            );
+          case StartGameView.name:
+            return MaterialPageRoute(
+              builder: (context) => StartGameView(),
             );
           default:
             return MaterialPageRoute(
