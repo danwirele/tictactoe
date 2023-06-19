@@ -92,5 +92,7 @@ class GameModel {
 
     //check 9 turn
     if (turnNum == 9) return const Field.none();
+
+    return null;
   }
 }
