@@ -12,6 +12,13 @@ class GameController with ChangeNotifier {
   void putField(Board board) {
     gameModel.putField(board);
     final winer = gameModel.checkWiner();
+    if (winer != null) {
+      gameModel.text = winer.mapOrNull(
+          none: (_) => 'Ничья!',
+          tick: (_) => 'Победили нолики!',
+          toe: (_) => 'Победили крестики!');
+      gameModel.turnNum = 9;
+    }
     notifyListeners();
   }
 
