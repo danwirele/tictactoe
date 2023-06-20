@@ -15,6 +15,15 @@ class GameView extends StatelessWidget {
       body: Column(
         children: [
           const Spacer(),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              controller.gameModel.text ?? '',
+              style: TextStyle(
+                fontSize: 32,
+              ),
+            ),
+          ),
           Expanded(
             flex: 2,
             child: Row(

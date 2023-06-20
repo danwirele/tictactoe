@@ -3,6 +3,7 @@ import 'package:tictactoe/model/entities/board.dart';
 class GameModel {
   Field nextField = const Field.tick();
   int turnNum = 0;
+  String? text = '';
   Map<Board, Field> card = {
     const Board.leftTop(): const Field.none(),
     const Board.centerTop(): const Field.none(),
@@ -19,6 +20,7 @@ class GameModel {
     card.updateAll((key, value) => value = const Field.none());
     turnNum = 0;
     nextField = const Field.tick();
+    text = '';
   }
 
   void putField(Board board) {
