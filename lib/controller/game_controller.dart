@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:tictactoe/core/services/services.dart';
 import 'package:tictactoe/model/entities/board.dart';
 import 'package:tictactoe/model/game_model.dart';
 
 class GameController with ChangeNotifier {
-  GameModel gameModel = GameModel();
+  late final GameModel gameModel;
+
+  GameController() {
+    gameModel = service<GameModel>();
+  }
+
   void resetGame() {
     gameModel.resetGame();
     notifyListeners();
