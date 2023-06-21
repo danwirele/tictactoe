@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictactoe/view/game_view/game_view.dart';
 
 class InitView extends StatelessWidget {
   static const name = 'InitView';
@@ -7,7 +8,11 @@ class InitView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    Future.delayed(
+      const Duration(seconds: 1),
+      () => Navigator.of(context).pushNamed(GameView.name),
+    );
+    return const Scaffold(
       body: Center(child: CircularProgressIndicator()),
     );
   }

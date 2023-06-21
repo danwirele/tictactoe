@@ -19,7 +19,7 @@ class GameView extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Text(
               controller.gameModel.text ?? '',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 32,
               ),
             ),
@@ -64,7 +64,7 @@ class GameView extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () => controller.resetGame(),
-            child: Text('Restart'),
+            child: const Text('Restart'),
           ),
           const Spacer(),
         ],
