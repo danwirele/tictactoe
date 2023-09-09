@@ -8,5 +8,5 @@ final service = GetIt.instance;
 
 FutureOr<void> init() {
   service.registerLazySingleton<GameController>(() => GameController());
-  service.registerLazySingleton(() => GameModel());
+  service.registerLazySingleton<GameModel>(() => GameModel());
 }
